@@ -57,11 +57,8 @@ namespace WebApplication5
             Database myDatabase = new Database();
 
             string query = "fletcherDeleteUser";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-            sqlParameters[0] = new SqlParameter("firstname", FName);
-            sqlParameters[1] = new SqlParameter("lastname", LName);
-            sqlParameters[2] = new SqlParameter("hkey", HKey);
-            sqlParameters[3] = new SqlParameter("userloginid", userLoginID);
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("userloginid", userLoginID);
 
             myDatabase.executeNonQueryWithParameters(sqlParameters, query);
 
