@@ -1,0 +1,17 @@
+body {
+    background-color: #70002d;
+    font-family: Tahoma, Arial, sans-serif;
+    color:silver;
+}
+
+h1, h2 {
+    color: white;
+}
+table{
+    margin: auto;
+}
+
+a{
+    color:white;
+}
+
