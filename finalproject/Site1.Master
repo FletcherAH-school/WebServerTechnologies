@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="finalproject.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <% string validUserName = (string)Session["User"];%>
+        <%if (validUserName != null){%>
+            
+            ur onto something, ooookkkk i see how it is why is it fucking with me
+
+
+        <%} %>
+
+        <%if (validUserName == null){%>
+            <header class ="menu">
+            <br />
+            <asp:Button ID="btnMasterLogin" runat="server" OnClick="Login_Click" Text="Login" />
+            <asp:Button ID="btnMasterSignup" runat="server" OnClick="Signup_Click" Text="Signup" />
+            <asp:Button ID="btnMasterHomepage" runat="server" OnClick="Homepage_Click" Text="Homepage" /> 
+            <br />
+           </header>
+
+        <%} %>
+           
+         
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+            </asp:ContentPlaceHolder>
+              
+    </form>
+</body>
+</html>

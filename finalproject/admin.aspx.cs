@@ -20,6 +20,7 @@ namespace finalproject
             if(!Page.IsPostBack)
             {
                 fillUsers();
+                showTable();
             }
             else
             {
@@ -72,7 +73,7 @@ namespace finalproject
             // open a connection to the database
             myConnection.Open();
 
-            string query = "SELECT firstname, lastname, userkey, userid, usertypeid, useremail, useraddressid, username FROM PAH_signup WHERE userID = " + userID; // one should feel itchy here..
+            string query = "SELECT firstname, lastname, userkey, userid, usertypeid, useremail, username FROM PAH_signup WHERE userID = " + userID; // one should feel itchy here..
 
             DataSet myDataSet = new DataSet();
             SqlCommand myCommand = new SqlCommand(query);
@@ -88,8 +89,11 @@ namespace finalproject
             txtFirstName.Text = myDataSet.Tables[0].Rows[0]["firstName"].ToString();
             txtLastName.Text = myDataSet.Tables[0].Rows[0]["lastName"].ToString();
             txtHKey.Text = myDataSet.Tables[0].Rows[0]["userKey"].ToString();
+            txtUserType.Text = myDataSet.Tables[0].Rows[0]["usertypeid"].ToString();
+            txtUserEmail.Text = myDataSet.Tables[0].Rows[0]["useremail"].ToString();
+            txtUserName.Text = myDataSet.Tables[0].Rows[0]["username"].ToString();
 
-           // Session["dontdothis"] = true;
+            // Session["dontdothis"] = true;
         }
 
         //update stuff
@@ -107,16 +111,16 @@ namespace finalproject
 
             string UMail = txtUserEmail.Text;
 
-            int UAddID = Convert.ToInt32(Session["useraddressid"]);
-
             int UTypeID = Convert.ToInt32(Session["usertypeid"]);
+
+            int UserID = Convert.ToInt32(Session["userid"]);
 
 
             //string UAddID = txtUserAddress.Text;
 
             // insert...
             Users myUser = new Users();
-            myUser.updateUser(UName, FName, LName, UKey, UMail, UAddID, UTypeID);
+            myUser.updateUser(UName, FName, LName, UKey, UMail, UTypeID, UserID);
             
             fillUsers();
 
@@ -143,13 +147,11 @@ namespace finalproject
             string UMail = txtUserEmail.Text;
 
             //string UAddID = txtUserAddress.Text;
-            
-            int UAddID = Convert.ToInt32(Session["useraddressid"]);
 
             int UTypeID = Convert.ToInt32(Session["usertypeid"]);
 
             Users myUser = new Users();
-            myUser.insertNewUser(UName, FName, LName, UKey,  UMail, UAddID, UTypeID);
+            myUser.insertNewUser(UName, FName, LName, UKey, UMail, UTypeID);
 
             fillUsers();
 
@@ -176,6 +178,15 @@ namespace finalproject
             resetStuff();
         }
 
+        private void showTable()
+        {
+            Users myUser = new Users();
+            DataSet myDataSet = myUser.getAllUsers();
+
+            gvUsers.DataSource = myDataSet.Tables[0];
+            gvUsers.DataBind();
+        }
+
         private void resetStuff()
         {
     
@@ -187,5 +198,6 @@ namespace finalproject
             txtUserType.Text = "";
             Session["userid"] = null;
         }
+
     }
 }

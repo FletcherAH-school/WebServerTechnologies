@@ -20,8 +20,7 @@ namespace finalproject
         {
             if(!Page.IsPostBack)
             {
-                Response.Write("Here");
-                showTable();
+                // put in a loadin variable here
 
             }
 
@@ -43,28 +42,17 @@ namespace finalproject
 
             string UMail = txtEmail.Text;
 
-            int UAddID = Convert.ToInt32(Session["useraddressid"]);
-
             int UTypeID = Convert.ToInt32(Session["usertypeid"]);
 
 
-
             Users myUser = new Users();
-            myUser.insertNewUser(UName, FName, LName, UKey, UMail, UAddID, UTypeID);
+            myUser.insertNewUser(UName, FName, LName, UKey, UMail, UTypeID);
+
+    // Response.Redirect("homepage.aspx");
 
 
-            showTable();
         }
-
-        private void showTable()
-        {
-            Users myUser = new Users();
-            DataSet myDataSet = myUser.getAllUsers();
-
-            gvUsers.DataSource = myDataSet.Tables[0];
-            gvUsers.DataBind();
-        }
+ 
     }
-
 
 }

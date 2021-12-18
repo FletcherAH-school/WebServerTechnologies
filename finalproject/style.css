@@ -1,0 +1,51 @@
+
+body {
+    background-color: #dddddd;
+    font-family: Tahoma, Arial, sans-serif;
+    color: black;
+    text-align:center;
+    align-content:center;
+}
+
+h1, h2 {
+    color: black;
+    display: inline-block;
+    margin:auto;
+    background-color: gray;
+    padding: 20px;
+
+}
+
+table {
+    margin: auto;
+}
+
+a {
+    color: white;
+}
+
+div{
+    text-align:center;
+       
+}
+
+.container {
+    background-color: gray;
+    margin: auto;
+    padding: 20px;
+    width:min-content;
+    border: 1px solid white;
+}
+
+header {
+    align-self: center;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color:lightcoral;
+    height: 4em;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    border-bottom: 2px solid white;
+}
